@@ -40,10 +40,30 @@ as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, factor_vec))
 ```
 
+
 ```{r}
 as.numeric(pull(prob1_df, samp_gt_0))*pull(prob1_df,samp)
 ```
 
 
 ## Problem 2
+
+Loading penguins dataset
+```{r}
+data("penguins", package="palmerpenguins")
+```
+
+Describing penguins dataset
+```{r}
+str(penguins)
+nrow(penguins)
+ncol(penguins)
+mean(pull(penguins,flipper_length_mm),na.rm=TRUE)
+```
+
+Scatterplot of flipper length vs bill length
+```{r}
+ggplot(penguins, aes(x=pull(penguins,bill_length_mm), y=pull(penguins,flipper_length_mm), color=pull(penguins,species))) + geom_point()
+ggsave("problem1_scatterplot.pdf",height=4,width=4)
+```
 
